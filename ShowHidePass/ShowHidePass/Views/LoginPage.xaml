@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ShowHidePass.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Padding="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="32" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="72" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="32" />
+                </Grid.ColumnDefinitions>
+
+                <Label 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="3"
+                Text="Login"
+                Style="{StaticResource LabelTitle}"
+            />
+
+                <Label 
+                Grid.Row="0" 
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Text="Sign up"
+                Style="{StaticResource LabelSubTitle}"
+                HorizontalTextAlignment="End" 
+                VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Image 
+                Source="User" 
+                Grid.Row="1" 
+                Grid.ColumnSpan="4"  
+            />
+
+                <Entry 
+                Grid.Row="2" 
+                Grid.ColumnSpan="4"
+                Placeholder="Username or email address" 
+                Text="{Binding UserName}"
+                Style="{StaticResource Entry}"
+            />
+
+                <Entry 
+                IsPassword="{Binding HidePassword}"
+                Grid.Row="3" 
+                Grid.ColumnSpan="4" 
+                Text="{Binding Password}"
+                Style="{StaticResource Entry}"
+                Placeholder="Password"  
+                />
+
+                <Image 
+                Grid.Row="3" 
+                Grid.Column="3" 
+                Source="{Binding EyeIcon}">
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowPasswordCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Button 
+                Text="LOG IN"
+                Grid.Row="4" Grid.ColumnSpan="4"
+                Command="{Binding LoginCommand}"
+                Style="{StaticResource ButtonRound}"
+            />
+
+                <Image 
+                Grid.Row="4" 
+                Grid.Column="1" 
+                Source="check" 
+            />
+
+                <Image 
+                Grid.Row="5" 
+                Grid.Column="3" 
+                Source="world" 
+            />
+
+                <Label 
+                Grid.Row="6" 
+                Grid.ColumnSpan="4" 
+                Text="Login with"
+                HorizontalTextAlignment="Center" 
+                VerticalTextAlignment="End" 
+                Style="{StaticResource LabelSubTitle}"
+            />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
