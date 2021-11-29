@@ -100,12 +100,13 @@
             />
 
                 <Label 
-                Grid.Row="6" 
+                IsVisible="{Binding ShowError}"
+                Grid.Row="5" 
                 Grid.ColumnSpan="4" 
-                Text="Login with"
+                Text="{Binding ErrorMessage}"
                 HorizontalTextAlignment="Center" 
                 VerticalTextAlignment="End" 
-                Style="{StaticResource LabelSubTitle}"
+                Style="{StaticResource WarningLabel}"
             />
             </Grid>
         </ScrollView>

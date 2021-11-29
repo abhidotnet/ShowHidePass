@@ -18,6 +18,12 @@
                 <Setter Property="BorderWidth" Value="2" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
+            <Style x:Key="WarningLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="Gold" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
             <Style x:Key="LabelTitle" TargetType="Label">
                 <Setter Property="FontSize" Value="Title" />
                 <Setter Property="FontAttributes" Value="Bold" />

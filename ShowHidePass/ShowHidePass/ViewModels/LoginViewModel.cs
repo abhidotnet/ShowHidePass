@@ -6,7 +6,19 @@ namespace ShowHidePass.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-
+        string errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return errorMessage;
+            }
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
         public string UserName { get; set; }
         public string Password { get; set; }
         bool hidePassword;
@@ -17,6 +29,18 @@ namespace ShowHidePass.ViewModels
                 OnPropertyChanged(nameof(HidePassword));
             } 
         }
+
+        bool showError;
+        public bool ShowError
+        {
+            get { return showError; }
+            set
+            {
+                showError = value;
+                OnPropertyChanged(nameof(ShowError));
+            }
+        }
+
         string eyeIcon = "eyehidden.png";
         public string EyeIcon
         {
@@ -37,6 +61,7 @@ namespace ShowHidePass.ViewModels
         {
             
             HidePassword = true;
+            ShowError = false; //IsVisible = false;
             LoginCommand = new Command(OnLoginClicked);
 
             ShowPasswordCommand = new Command(HidePasswordChange);
@@ -58,7 +83,15 @@ namespace ShowHidePass.ViewModels
         private async void OnLoginClicked(object obj)
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new AboutPage()));
+            if (Password == "opensesame")
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new AboutPage()));
+            }
+            else
+            {
+                ErrorMessage = "Sorry! You have wrong Password!";
+                ShowError = true;
+            }
         }
     }
 }
